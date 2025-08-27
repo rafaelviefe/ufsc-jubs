@@ -73,8 +73,8 @@ export default function ModalidadeDetalhesScreen() {
           title: modalidade.nome,
           // Botão de voltar é adicionado automaticamente pelo Stack, mas podemos customizar
           headerLeft: () => (
-            <TouchableOpacity onPress={() => router.back()} style={{ marginLeft: 16 }}>
-              <Ionicons name="arrow-back" size={24} color="#111827" />
+            <TouchableOpacity onPress={() => router.back()} style={{ marginLeft: 4, marginRight: 8 }}>
+              <Ionicons name="arrow-back" size={24} color="#F9FAFB" />
             </TouchableOpacity>
           ),
           headerRight: () => (
