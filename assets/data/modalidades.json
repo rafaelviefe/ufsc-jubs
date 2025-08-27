@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "nome": "Futebol",
+    "icone": "football",
+    "datas": "20 a 22 de Maio",
+    "imagem": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "horarios": [
+      { "dia": "20/05", "hora": "14:00 - Classificatórias" },
+      { "dia": "21/05", "hora": "16:00 - Semifinais" },
+      { "dia": "22/05", "hora": "18:00 - Final" }
+    ],
+    "local": "Centro de Desportos (CDS) - UFSC"
+  },
+  {
+    "id": 2,
+    "nome": "Tênis",
+    "icone": "tennisball",
+    "datas": "21 a 23 de Maio",
+    "imagem": "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "horarios": [
+      { "dia": "21/05", "hora": "09:00 - Fase de Grupos" },
+      { "dia": "22/05", "hora": "10:00 - Quartas de Final" },
+      { "dia": "23/05", "hora": "15:00 - Finais" }
+    ],
+    "local": "Ginásio da ELASE"
+  },
+  {
+    "id": 3,
+    "nome": "Basquete",
+    "icone": "basketball",
+    "datas": "23 a 25 de Maio",
+    "imagem": "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=2380&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "horarios": [
+      { "dia": "23/05", "hora": "13:00 - Rodada 1" },
+      { "dia": "24/05", "hora": "15:00 - Semifinais" },
+      { "dia": "25/05", "hora": "17:00 - Final" }
+    ],
+    "local": "Academia da Polícia Militar"
+  },
+  {
+    "id": 4,
+    "nome": "Natação",
+    "icone": "water",
+    "datas": "24 de Maio",
+    "imagem": "https://images.unsplash.com/photo-1560090947-5307abc46ffc?q=80&w=1336&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "horarios": [
+      { "dia": "24/05", "hora": "08:00 - Eliminatórias" },
+      { "dia": "24/05", "hora": "14:00 - Finais" }
+    ],
+    "local": "Piscina Olímpica (CDS) - UFSC"
+  },
+  {
+    "id": 5,
+    "nome": "Judô",
+    "icone": "body",
+    "datas": "26 de Maio",
+    "imagem": "https://images.unsplash.com/photo-1585537884613-1a9bcd024983?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "horarios": [
+      { "dia": "26/05", "hora": "09:00 - Pesagem" },
+      { "dia": "26/05", "hora": "11:00 - Lutas" }
+    ],
+    "local": "Ginásio de Lutas (CDS) - UFSC"
+  },
+  {
+    "id": 6,
+    "nome": "Rugby",
+    "icone": "american-football",
+    "datas": "25 a 27 de Maio",
+    "imagem": "https://images.unsplash.com/photo-1480099225005-2513c8947aec?q=80&w=3103&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "horarios": [
+        { "dia": "25/05", "hora": "10:00 - Fase de Grupos" },
+        { "dia": "26/05", "hora": "11:00 - Semifinais" },
+        { "dia": "27/05", "hora": "14:00 - Final" }
+    ],
+    "local": "ASTEL"
+  }
+]
