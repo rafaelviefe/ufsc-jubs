@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ActivityIndicator, SafeAreaView } from 'react-native';
+import { 
+  View, Text, StyleSheet, Image, ScrollView, 
+  TouchableOpacity, ActivityIndicator, SafeAreaView 
+} from 'react-native';
 import { useLocalSearchParams, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -13,8 +16,10 @@ export default function ModalidadeDetalhesScreen() {
   const router = useRouter();
   const [modalidade, setModalidade] = useState(null);
   const [isFavorito, setIsFavorito] = useState(false);
+  
+  // 1. NOVO ESTADO DE CONTROLE para evitar cliques múltiplos
+  const [isSaving, setIsSaving] = useState(false);
 
-  // Carrega o status de favorito para esta modalidade
   const loadFavoritoStatus = useCallback(async () => {
     try {
       const storedFavoritos = await AsyncStorage.getItem(STORAGE_KEY);
@@ -27,16 +32,20 @@ export default function ModalidadeDetalhesScreen() {
     }
   }, [id]);
   
-  // Encontra os dados da modalidade e carrega o status de favorito
   useEffect(() => {
     const data = modalidadesData.find(m => m.id.toString() === id);
     setModalidade(data);
     loadFavoritoStatus();
   }, [id, loadFavoritoStatus]);
 
-  // Função para alternar o status de favorito
+  // 2. FUNÇÃO toggleFavorito ATUALIZADA
   const toggleFavorito = async () => {
-    if (!modalidade) return;
+    // Se já estiver salvando, ignora o clique
+    if (isSaving || !modalidade) return;
+
+    // Ativa a "trava"
+    setIsSaving(true);
+    // Atualização otimista da UI para resposta imediata
     const newFavoritoStatus = !isFavorito;
     setIsFavorito(newFavoritoStatus);
     
@@ -53,8 +62,11 @@ export default function ModalidadeDetalhesScreen() {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify([...favoritosSet]));
     } catch (error) {
       console.error('Erro ao salvar favoritos:', error);
-      // Reverte o estado em caso de erro
+      // Em caso de erro, reverte o estado da UI
       setIsFavorito(!newFavoritoStatus);
+    } finally {
+      // Libera a "trava" ao final da operação (com sucesso ou erro)
+      setIsSaving(false);
     }
   };
 
@@ -71,14 +83,18 @@ export default function ModalidadeDetalhesScreen() {
       <Stack.Screen
         options={{
           title: modalidade.nome,
-          // Botão de voltar é adicionado automaticamente pelo Stack, mas podemos customizar
           headerLeft: () => (
             <TouchableOpacity onPress={() => router.back()} style={{ marginLeft: 4, marginRight: 8 }}>
               <Ionicons name="arrow-back" size={24} color="#F9FAFB" />
             </TouchableOpacity>
           ),
           headerRight: () => (
-            <TouchableOpacity onPress={toggleFavorito} style={{ marginRight: 16 }}>
+            // 3. BOTÃO DESABILITADO DURANTE O SALVAMENTO
+            <TouchableOpacity 
+              onPress={toggleFavorito} 
+              disabled={isSaving} 
+              style={styles.headerButton}
+            >
               <Ionicons 
                 name={isFavorito ? 'star' : 'star-outline'} 
                 size={28} 
@@ -118,6 +134,7 @@ export default function ModalidadeDetalhesScreen() {
 }
 
 const styles = StyleSheet.create({
+  // ... (o resto dos seus estilos permanece igual)
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -126,6 +143,10 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingBottom: 24,
+  },
+  headerButton: { // Estilo para aumentar a área de toque
+    marginRight: 16,
+    padding: 4,
   },
   image: {
     width: '100%',
