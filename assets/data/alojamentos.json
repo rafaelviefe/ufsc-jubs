@@ -2,7 +2,7 @@
   {
     "id": 1,
     "nome": "Hotel Universitário",
-    "imagem": "https://via.placeholder.com/400x250.png?text=Hotel+Universitário",
+    "imagem": "https://images.unsplash.com/photo-1575835939927-4edeaa7f5fa7?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "diaria": "R$ 95,00",
     "contato": {
       "email": "reservas@hoteluniversitario.com",
@@ -16,7 +16,7 @@
   {
     "id": 2,
     "nome": "Pousada Aconchego do Campeão",
-    "imagem": "https://via.placeholder.com/400x250.png?text=Pousada+Aconchego",
+    "imagem": "https://images.unsplash.com/photo-1709805619372-40de3f158e83?q=80&w=2390&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "diaria": "R$ 80,00",
     "contato": {
       "email": "contato@pousadaaconchego.com",
@@ -30,7 +30,7 @@
   {
     "id": 3,
     "nome": "Hostel da Galera",
-    "imagem": "https://via.placeholder.com/400x250.png?text=Hostel+da+Galera",
+    "imagem": "https://blog.architizer.com/wp-content/uploads/Screen-Shot-2021-10-11-at-2.14.18-PM-1024x527.png",
     "diaria": "R$ 55,00",
     "contato": {
       "email": "faleconosco@hosteldagalera.com.br",
@@ -44,7 +44,7 @@
   {
     "id": 4,
     "nome": "República Estudantil Central",
-    "imagem": "https://via.placeholder.com/400x250.png?text=República+Estudantil",
+    "imagem": "https://images.unsplash.com/photo-1596276020587-8044fe049813?q=80&w=1839&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "diaria": "R$ 40,00",
     "contato": {
       "email": "vagas@republicacentral.com",
@@ -58,7 +58,7 @@
   {
     "id": 5,
     "nome": "Flats & Apartamentos Trindade",
-    "imagem": "https://via.placeholder.com/400x250.png?text=Flats+Trindade",
+    "imagem": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "diaria": "R$ 120,00",
     "contato": {
       "email": "aluguel@flatstrindade.com",
