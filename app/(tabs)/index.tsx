@@ -63,7 +63,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F3F4F6', // Alterado para um cinza um pouco mais escuro
+    backgroundColor: '#F3F4F6',
   },
   scrollContent: {
     paddingBottom: 40,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
-    overflow: 'hidden', // Garante que a imagem não ultrapasse a borda
+    overflow: 'hidden',
     elevation: 2,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
