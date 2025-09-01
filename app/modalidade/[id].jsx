@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { 
   View, Text, StyleSheet, Image, ScrollView, 
-  TouchableOpacity, ActivityIndicator, SafeAreaView 
+  TouchableOpacity, ActivityIndicator, SafeAreaView,
+  Linking, // << NOVO: Importado para abrir links externos (mapa)
+  Platform // << NOVO: Importado para diferenciar iOS e Android
 } from 'react-native';
 import { useLocalSearchParams, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,8 +18,6 @@ export default function ModalidadeDetalhesScreen() {
   const router = useRouter();
   const [modalidade, setModalidade] = useState(null);
   const [isFavorito, setIsFavorito] = useState(false);
-  
-  // 1. NOVO ESTADO DE CONTROLE para evitar cliques múltiplos
   const [isSaving, setIsSaving] = useState(false);
 
   const loadFavoritoStatus = useCallback(async () => {
@@ -38,14 +38,10 @@ export default function ModalidadeDetalhesScreen() {
     loadFavoritoStatus();
   }, [id, loadFavoritoStatus]);
 
-  // 2. FUNÇÃO toggleFavorito ATUALIZADA
   const toggleFavorito = async () => {
-    // Se já estiver salvando, ignora o clique
     if (isSaving || !modalidade) return;
 
-    // Ativa a "trava"
     setIsSaving(true);
-    // Atualização otimista da UI para resposta imediata
     const newFavoritoStatus = !isFavorito;
     setIsFavorito(newFavoritoStatus);
     
@@ -62,12 +58,26 @@ export default function ModalidadeDetalhesScreen() {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify([...favoritosSet]));
     } catch (error) {
       console.error('Erro ao salvar favoritos:', error);
-      // Em caso de erro, reverte o estado da UI
       setIsFavorito(!newFavoritoStatus);
     } finally {
-      // Libera a "trava" ao final da operação (com sucesso ou erro)
       setIsSaving(false);
     }
+  };
+
+  // << TAREFA 2: Função para abrir o mapa
+  const openMap = () => {
+    if (!modalidade?.coordenadas) return;
+
+    const { latitude, longitude } = modalidade.coordenadas;
+    const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
+    const latLng = `${latitude},${longitude}`;
+    const label = modalidade.local;
+    const url = Platform.select({
+      ios: `${scheme}${label}@${latLng}`,
+      android: `${scheme}${latLng}(${label})`
+    });
+
+    Linking.openURL(url);
   };
 
   if (!modalidade) {
@@ -89,7 +99,6 @@ export default function ModalidadeDetalhesScreen() {
             </TouchableOpacity>
           ),
           headerRight: () => (
-            // 3. BOTÃO DESABILITADO DURANTE O SALVAMENTO
             <TouchableOpacity 
               onPress={toggleFavorito} 
               disabled={isSaving} 
@@ -110,10 +119,15 @@ export default function ModalidadeDetalhesScreen() {
         <View style={styles.content}>
           <Text style={styles.title}>{modalidade.nome}</Text>
           
-          <View style={styles.infoBox}>
-            <Ionicons name="location-outline" size={24} color="#4B5563" />
-            <Text style={styles.infoText}>{modalidade.local}</Text>
-          </View>
+          {/* << TAREFA 2: Localização agora é um botão */}
+          <TouchableOpacity onPress={openMap}>
+            <View style={styles.infoBox}>
+              <Ionicons name="location-outline" size={24} color="#4B5563" />
+              <Text style={styles.infoText}>{modalidade.local}</Text>
+              {/* Adicionado um ícone para indicar que é clicável */}
+              <Ionicons name="open-outline" size={20} color="#9CA3AF" style={styles.openIcon} />
+            </View>
+          </TouchableOpacity>
 
           <View style={styles.infoBox}>
             <Ionicons name="calendar-outline" size={24} color="#4B5563" />
@@ -134,7 +148,6 @@ export default function ModalidadeDetalhesScreen() {
 }
 
 const styles = StyleSheet.create({
-  // ... (o resto dos seus estilos permanece igual)
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -144,9 +157,14 @@ const styles = StyleSheet.create({
   container: {
     paddingBottom: 24,
   },
-  headerButton: { // Estilo para aumentar a área de toque
+  // << TAREFA 3: Estilos para os botões do cabeçalho para aumentar a área de toque
+  headerLeftButton: {
+    marginLeft: 16,
+    padding: 8, // Aumenta a área de toque
+  },
+  headerRightButton: {
     marginRight: 16,
-    padding: 4,
+    padding: 8, // Aumenta a área de toque
   },
   image: {
     width: '100%',
@@ -175,6 +193,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#374151',
     marginLeft: 12,
+    flex: 1, // Faz o texto ocupar o espaço disponível
+  },
+  openIcon: { // << NOVO: Estilo para o ícone "abrir"
+    marginLeft: 'auto',
   },
   sectionTitle: {
     fontSize: 20,

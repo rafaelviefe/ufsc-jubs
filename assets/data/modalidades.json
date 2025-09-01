@@ -10,7 +10,11 @@
       { "dia": "21/05", "hora": "16:00 - Semifinais" },
       { "dia": "22/05", "hora": "18:00 - Final" }
     ],
-    "local": "Centro de Desportos (CDS) - UFSC"
+    "local": "Centro de Desportos (CDS) - UFSC",
+    "coordenadas": {
+      "latitude": -27.604029,
+      "longitude": -48.518360
+    }
   },
   {
     "id": 2,
@@ -23,7 +27,11 @@
       { "dia": "22/05", "hora": "10:00 - Quartas de Final" },
       { "dia": "23/05", "hora": "15:00 - Finais" }
     ],
-    "local": "Ginásio da ELASE"
+    "local": "Ginásio da ELASE",
+    "coordenadas": {
+      "latitude": -27.604522,
+      "longitude": -48.522244
+    }
   },
   {
     "id": 3,
@@ -36,7 +44,11 @@
       { "dia": "24/05", "hora": "15:00 - Semifinais" },
       { "dia": "25/05", "hora": "17:00 - Final" }
     ],
-    "local": "Academia da Polícia Militar"
+    "local": "Academia da Polícia Militar",
+    "coordenadas": {
+      "latitude": -27.592014,
+      "longitude": -48.518934
+    }
   },
   {
     "id": 4,
@@ -48,7 +60,11 @@
       { "dia": "24/05", "hora": "08:00 - Eliminatórias" },
       { "dia": "24/05", "hora": "14:00 - Finais" }
     ],
-    "local": "Piscina Olímpica (CDS) - UFSC"
+    "local": "Piscina Olímpica (CDS) - UFSC",
+    "coordenadas": {
+      "latitude": -27.605336,
+      "longitude": -48.519936
+    }
   },
   {
     "id": 5,
@@ -60,7 +76,11 @@
       { "dia": "26/05", "hora": "09:00 - Pesagem" },
       { "dia": "26/05", "hora": "11:00 - Lutas" }
     ],
-    "local": "Ginásio de Lutas (CDS) - UFSC"
+    "local": "Ginásio de Lutas (CDS) - UFSC",
+    "coordenadas": {
+      "latitude": -27.604961,
+      "longitude": -48.519546
+    }
   },
   {
     "id": 6,
@@ -73,6 +93,10 @@
         { "dia": "26/05", "hora": "11:00 - Semifinais" },
         { "dia": "27/05", "hora": "14:00 - Final" }
     ],
-    "local": "ASTEL"
+    "local": "ASTEL",
+    "coordenadas": {
+      "latitude": -27.588029,
+      "longitude": -48.501901
+    }
   }
 ]
