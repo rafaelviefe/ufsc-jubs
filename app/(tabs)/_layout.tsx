@@ -75,6 +75,7 @@ export default function AppLayout() {
           drawerIcon: ({ size, color }) => (
             <Ionicons name="bed-outline" size={size} color={color} />
           ),
+          headerShown: false,
         }}
       />
     </Drawer>
