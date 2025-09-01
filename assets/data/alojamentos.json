@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "nome": "Hotel Universitário",
+    "imagem": "https://via.placeholder.com/400x250.png?text=Hotel+Universitário",
+    "diaria": "R$ 95,00",
+    "contato": {
+      "email": "reservas@hoteluniversitario.com",
+      "telefone": "48999991111"
+    },
+    "coordenadas": {
+      "latitude": -27.601500,
+      "longitude": -48.518000
+    }
+  },
+  {
+    "id": 2,
+    "nome": "Pousada Aconchego do Campeão",
+    "imagem": "https://via.placeholder.com/400x250.png?text=Pousada+Aconchego",
+    "diaria": "R$ 80,00",
+    "contato": {
+      "email": "contato@pousadaaconchego.com",
+      "telefone": "48999992222"
+    },
+    "coordenadas": {
+      "latitude": -27.608800,
+      "longitude": -48.521500
+    }
+  },
+  {
+    "id": 3,
+    "nome": "Hostel da Galera",
+    "imagem": "https://via.placeholder.com/400x250.png?text=Hostel+da+Galera",
+    "diaria": "R$ 55,00",
+    "contato": {
+      "email": "faleconosco@hosteldagalera.com.br",
+      "telefone": "48999993333"
+    },
+    "coordenadas": {
+      "latitude": -27.595000,
+      "longitude": -48.512300
+    }
+  },
+  {
+    "id": 4,
+    "nome": "República Estudantil Central",
+    "imagem": "https://via.placeholder.com/400x250.png?text=República+Estudantil",
+    "diaria": "R$ 40,00",
+    "contato": {
+      "email": "vagas@republicacentral.com",
+      "telefone": "48999994444"
+    },
+    "coordenadas": {
+      "latitude": -27.598200,
+      "longitude": -48.519900
+    }
+  },
+  {
+    "id": 5,
+    "nome": "Flats & Apartamentos Trindade",
+    "imagem": "https://via.placeholder.com/400x250.png?text=Flats+Trindade",
+    "diaria": "R$ 120,00",
+    "contato": {
+      "email": "aluguel@flatstrindade.com",
+      "telefone": "48999995555"
+    },
+    "coordenadas": {
+      "latitude": -27.602100,
+      "longitude": -48.525500
+    }
+  }
+]
