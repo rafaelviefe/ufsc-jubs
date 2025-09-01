@@ -26,7 +26,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB', // Fundo de tela cinza muito claro
+    backgroundColor: '#F9FAFB',
   },
   content: {
     flex: 1,
@@ -42,28 +42,28 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#111827', // Preto suave
+    color: '#111827',
     textAlign: 'center',
     marginBottom: 8,
   },
   subtitle: {
     fontSize: 16,
-    color: '#6B7280', // Cinza para texto secundário
+    color: '#6B7280',
     textAlign: 'center',
     marginBottom: 32,
   },
   infoBox: {
     marginTop: 20,
     padding: 20,
-    backgroundColor: '#FFFFFF', // Fundo branco para destaque
+    backgroundColor: '#FFFFFF',
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#E5E7EB', // Borda cinza clara
+    borderColor: '#E5E7EB',
     width: '100%',
   },
   infoText: {
     fontSize: 18,
-    color: '#374151', // Cinza mais escuro
+    color: '#374151',
     textAlign: 'center',
     lineHeight: 28,
   },

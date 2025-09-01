@@ -1,46 +1,37 @@
-// Lembre-se de instalar as dependências:
-// npx expo install @react-navigation/drawer react-native-gesture-handler react-native-reanimated
-
 import React from 'react';
 import { Drawer } from 'expo-router/drawer';
 import { Ionicons } from '@expo/vector-icons';
 
-// Definição da nova paleta de cores para fácil manutenção
 const colors = {
-  background: '#FFFFFF', // Fundo principal e do header
-  drawerBackground: '#F9FAFB', // Fundo do menu (um cinza bem claro)
-  textPrimary: '#111827',   // Texto principal (preto suave)
-  textSecondary: '#6B7280', // Texto inativo/secundário (cinza)
-  accent: '#3B82F6',        // Cor de destaque (azul moderno)
+  background: '#FFFFFF',
+  drawerBackground: '#F9FAFB',
+  textPrimary: '#111827',
+  textSecondary: '#6B7280',
+  accent: '#3B82F6',
 };
 
 export default function AppLayout() {
   return (
     <Drawer
       screenOptions={{
-        // Estilos do Header (barra superior)
         headerStyle: {
           backgroundColor: colors.background,
-          elevation: 0, // Remove a sombra no Android
-          shadowOpacity: 0, // Remove a sombra no iOS
+          elevation: 0,
+          shadowOpacity: 0,
           borderBottomWidth: 1,
-          borderBottomColor: '#E5E7EB', // Borda sutil
+          borderBottomColor: '#E5E7EB',
         },
-        headerTintColor: colors.textPrimary, // Cor do título e ícone do menu
+        headerTintColor: colors.textPrimary,
 
-        // Estilos do Menu Lateral (Drawer)
         drawerStyle: {
           backgroundColor: colors.drawerBackground,
-          width: 250, // Um pouco mais de espaço
+          width: 250,
         },
-        drawerActiveTintColor: colors.accent, // Cor do item ativo
-        drawerActiveBackgroundColor: '#EFF6FF', // Fundo do item ativo (azul bem claro)
-        drawerInactiveTintColor: colors.textSecondary, // Cor do item inativo
+        drawerActiveTintColor: colors.accent,
+        drawerActiveBackgroundColor: '#EFF6FF',
+        drawerInactiveTintColor: colors.textSecondary,
 
-        // Estilo do texto do menu - AJUSTE PRINCIPAL
         drawerLabelStyle: {
-          // marginLeft removido para corrigir o espaçamento
-          // O valor padrão agora cria um espaço adequado
           fontSize: 16,
           fontWeight: '500',
         }

@@ -4,7 +4,6 @@ import { Link, useFocusEffect } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Importa os dados do arquivo JSON local
 import modalidadesData from '../../assets/data/modalidades.json';
 
 const STORAGE_KEY = '@jubs_favoritos';
@@ -14,7 +13,6 @@ export default function ProgramacaoScreen() {
   const [favoritos, setFavoritos] = useState(new Set());
   const [loading, setLoading] = useState(true);
 
-  // Função para carregar os favoritos do AsyncStorage
   const loadFavoritos = async () => {
     try {
       const storedFavoritos = await AsyncStorage.getItem(STORAGE_KEY);
@@ -26,23 +24,18 @@ export default function ProgramacaoScreen() {
     }
   };
 
-  // Carrega os dados das modalidades e os favoritos iniciais
   useEffect(() => {
     const sortedData = [...modalidadesData].sort((a, b) => a.nome.localeCompare(b.nome));
     setModalidades(sortedData);
     loadFavoritos().finally(() => setLoading(false));
   }, []);
 
-  // useFocusEffect para recarregar os favoritos sempre que a tela ganhar foco
-  // Isso garante que se um item for favoritado/desfavoritado na tela de detalhes,
-  // a lista principal será atualizada ao voltar.
   useFocusEffect(
     useCallback(() => {
       loadFavoritos();
     }, [])
   );
   
-  // Função para alternar o status de favorito
   const toggleFavorito = async (id) => {
     const novosFavoritos = new Set(favoritos);
     if (novosFavoritos.has(id)) {
@@ -107,7 +100,7 @@ export default function ProgramacaoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F3F4F6', // Fundo cinza um pouco mais escuro
+    backgroundColor: '#F3F4F6',
   },
   center: {
     justifyContent: 'center',
@@ -150,7 +143,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   favoriteButton: {
-    padding: 8, // Área de toque maior
+    padding: 8,
     marginLeft: 16,
   },
 });

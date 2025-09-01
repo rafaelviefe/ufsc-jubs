@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-// Este é o conteúdo para AlojamentosScreen.js
-// Cole o mesmo StyleSheet nos outros arquivos (ListaInteresseScreen e ProgramacaoScreen)
 export default function ListaInteresseScreen() {
   return (
     <View style={placeholderStyles.container}>
@@ -17,18 +15,18 @@ const placeholderStyles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F9FAFB', // Novo fundo padrão
+        backgroundColor: '#F9FAFB',
         paddingHorizontal: 20,
     },
     text: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#111827', // Nova cor de texto primária
+        color: '#111827',
         textAlign: 'center',
     },
     subtext: {
         fontSize: 16,
-        color: '#6B7280', // Nova cor de texto secundária
+        color: '#6B7280',
         marginTop: 8,
         textAlign: 'center',
     }

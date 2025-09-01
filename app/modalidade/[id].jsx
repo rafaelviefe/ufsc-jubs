@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { 
-  View, Text, StyleSheet, Image, ScrollView, 
-  TouchableOpacity, ActivityIndicator, SafeAreaView,
-  Linking, // << NOVO: Importado para abrir links externos (mapa)
-  Platform // << NOVO: Importado para diferenciar iOS e Android
+  View, Text, StyleSheet, Image, 
+  ActivityIndicator, SafeAreaView,
+  Linking,
+  Platform
 } from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useLocalSearchParams, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -16,11 +17,11 @@ const STORAGE_KEY = '@jubs_favoritos';
 export default function ModalidadeDetalhesScreen() {
   const { id } = useLocalSearchParams();
   const router = useRouter();
-  const [modalidade, setModalidade] = useState(null);
-  const [isFavorito, setIsFavorito] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
+  const [modalidade, setModalidade] = React.useState(null);
+  const [isFavorito, setIsFavorito] = React.useState(false);
+  const [isSaving, setIsSaving] = React.useState(false);
 
-  const loadFavoritoStatus = useCallback(async () => {
+  const loadFavoritoStatus = React.useCallback(async () => {
     try {
       const storedFavoritos = await AsyncStorage.getItem(STORAGE_KEY);
       if (storedFavoritos !== null) {
@@ -32,7 +33,7 @@ export default function ModalidadeDetalhesScreen() {
     }
   }, [id]);
   
-  useEffect(() => {
+  React.useEffect(() => {
     const data = modalidadesData.find(m => m.id.toString() === id);
     setModalidade(data);
     loadFavoritoStatus();
@@ -64,7 +65,6 @@ export default function ModalidadeDetalhesScreen() {
     }
   };
 
-  // << TAREFA 2: Função para abrir o mapa
   const openMap = () => {
     if (!modalidade?.coordenadas) return;
 
@@ -93,6 +93,11 @@ export default function ModalidadeDetalhesScreen() {
       <Stack.Screen
         options={{
           title: modalidade.nome,
+          headerStyle: {
+            backgroundColor: '#111827',
+          },
+          headerTintColor: '#FFFFFF',
+
           headerLeft: () => (
             <TouchableOpacity onPress={() => router.back()} style={{ marginLeft: 4, marginRight: 8 }}>
               <Ionicons name="arrow-back" size={24} color="#F9FAFB" />
@@ -102,7 +107,7 @@ export default function ModalidadeDetalhesScreen() {
             <TouchableOpacity 
               onPress={toggleFavorito} 
               disabled={isSaving} 
-              style={styles.headerButton}
+              style={styles.headerRightButton}
             >
               <Ionicons 
                 name={isFavorito ? 'star' : 'star-outline'} 
@@ -119,12 +124,10 @@ export default function ModalidadeDetalhesScreen() {
         <View style={styles.content}>
           <Text style={styles.title}>{modalidade.nome}</Text>
           
-          {/* << TAREFA 2: Localização agora é um botão */}
           <TouchableOpacity onPress={openMap}>
             <View style={styles.infoBox}>
               <Ionicons name="location-outline" size={24} color="#4B5563" />
               <Text style={styles.infoText}>{modalidade.local}</Text>
-              {/* Adicionado um ícone para indicar que é clicável */}
               <Ionicons name="open-outline" size={20} color="#9CA3AF" style={styles.openIcon} />
             </View>
           </TouchableOpacity>
@@ -157,14 +160,13 @@ const styles = StyleSheet.create({
   container: {
     paddingBottom: 24,
   },
-  // << TAREFA 3: Estilos para os botões do cabeçalho para aumentar a área de toque
   headerLeftButton: {
     marginLeft: 16,
-    padding: 8, // Aumenta a área de toque
+    padding: 8,
   },
   headerRightButton: {
     marginRight: 16,
-    padding: 8, // Aumenta a área de toque
+    padding: 8,
   },
   image: {
     width: '100%',
@@ -193,9 +195,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#374151',
     marginLeft: 12,
-    flex: 1, // Faz o texto ocupar o espaço disponível
+    flex: 1, 
   },
-  openIcon: { // << NOVO: Estilo para o ícone "abrir"
+  openIcon: {
     marginLeft: 'auto',
   },
   sectionTitle: {
